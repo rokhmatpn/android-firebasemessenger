@@ -13,7 +13,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        registerButton.setOnClickListener(){
+        registerButton.setOnClickListener {
 
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
             FirebaseAuth.getInstance().signInWithEmailAndPassword("$email", "$password")
         }
 
-        returnTextView.setOnClickListener(){
+        returnTextView.setOnClickListener {
             finish()
         }
     }

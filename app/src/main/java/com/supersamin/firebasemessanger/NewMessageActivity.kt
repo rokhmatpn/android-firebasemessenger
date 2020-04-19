@@ -1,9 +1,9 @@
 package com.supersamin.firebasemessanger
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -14,7 +14,6 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.activity_new_message.*
 import kotlinx.android.synthetic.main.user_row_newmessage.view.*
-import java.text.FieldPosition
 
 class NewMessageActivity : AppCompatActivity() {
 
@@ -30,6 +29,10 @@ class NewMessageActivity : AppCompatActivity() {
         fetchUsers()
     }
 
+    companion object {
+        val USER_KEY = "USER_KEY"
+    }
+
     private fun fetchUsers(){
         val ref = FirebaseDatabase.getInstance().getReference("/users")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
@@ -42,6 +45,20 @@ class NewMessageActivity : AppCompatActivity() {
                         adapter.add(UserItem(user))
                     }
                 }
+
+                // add on click adapter
+                adapter.setOnItemClickListener { item, view ->
+
+                    Log.d("test", "memang lewat sini")
+
+                    val userItem = item as UserItem
+                    val intent = Intent(view.context, ChatLogAcitivity::class.java)
+                    intent.putExtra(USER_KEY, userItem.user)
+                    startActivity(intent)
+
+                    finish()
+                }
+
                 newmessageRecyclerView.adapter = adapter
             }
 

@@ -9,19 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewMessageActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LastMessagesActivity" />
+        <activity android:name="com.supersamin.firebasemessanger.ChatLogAcitivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.supersamin.firebasemessanger.LastMessagesActivity" />
         </activity>
-        <activity android:name=".LastMessagesActivity">
+        <activity android:name="com.supersamin.firebasemessanger.NewMessageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.supersamin.firebasemessanger.LastMessagesActivity" />
+        </activity>
+        <activity android:name="com.supersamin.firebasemessanger.LastMessagesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity">
+        <activity android:name="com.supersamin.firebasemessanger.LoginActivity" />
+        <activity android:name="com.supersamin.firebasemessanger.RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
